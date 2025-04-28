@@ -1,0 +1,219 @@
+header {
+    background-color: #fff;
+    padding: 20px;
+    display: flex; /* Ativa o Flexbox para o header */
+    align-items: center; /* Alinha verticalmente os itens ao centro */
+    justify-content: space-around; /* Distribui o espaço entre os blocos */
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    display: block; /* Permite que a imagem seja clicável */
+    text-align: center; /* Centraliza o logo dentro do bloco */
+}
+
+.centro {
+    text-align: center; /* Centraliza o título e a descrição dentro do bloco */
+}
+
+.centro h1 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 2.8em;
+}
+
+.centro p {
+    color: #777;
+    font-size: 1.1em;
+    margin-bottom: 0;
+}
+
+.profile-img {
+    width: 80px; /* Ajuste o tamanho conforme necessário */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.navbar nav a:hover {
+    color: #007bff;
+}
+
+/* Estilos para a seção Sobre Mim */
+#sobre {
+    padding: 40px 20px; /* Espaçamento interno superior/inferior e laterais */
+    background-color: #f9f9f9; /* Cor de fundo levemente acinzentada */
+    margin-bottom: 30px; /* Espaçamento abaixo da seção */
+}
+
+#sobre h2 {
+    color: #333; /* Cor do título "Sobre Mim" */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+    font-size: 2.5em; /* Tamanho da fonte do título */
+    text-align: center; /* Centralizar o título */
+}
+
+#sobre h3 {
+    color: #555; /* Cor do título "Carta de Apresentação" */
+    margin-top: 30px; /* Espaçamento acima do subtítulo */
+    margin-bottom: 15px; /* Espaçamento abaixo do subtítulo */
+    font-size: 1.8em; /* Tamanho da fonte do subtítulo */
+}
+
+#sobre p {
+    line-height: 1.6; /* Altura da linha para melhor leitura */
+    margin-bottom: 15px; /* Espaçamento entre os parágrafos */
+    color: #666; /* Cor do texto dos parágrafos */
+}
+
+#sobre ul {
+    list-style: disc; /* Estilo dos bullet points da lista */
+    margin-left: 20px; /* Indentação da lista */
+    margin-bottom: 15px; /* Espaçamento abaixo da lista */
+    color: #666; /* Cor do texto da lista */
+}
+
+#sobre li {
+    line-height: 1.6; /* Altura da linha dos itens da lista */
+    margin-bottom: 5px; /* Espaçamento entre os itens da lista */
+}
+
+/* Estilos para a seção Projetos */
+#projetos {
+    padding: 40px 20px;
+    background-color: #f2f2f2; /* Cor de fundo um pouco mais escura para diferenciar */
+    margin-bottom: 30px;
+}
+
+#projetos h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.projetos-grid {
+    display: grid; /* Usamos Grid para o layout dos cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cria colunas responsivas */
+    gap: 20px; /* Espaçamento entre os cards */
+}
+
+.projeto-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.projeto-card h3 {
+    color: #007bff; /* Cor do título do projeto */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+.projeto-card p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.projeto-card strong {
+    color: #333;
+}
+
+.projeto-links {
+    margin-top: 15px;
+}
+
+.projeto-links a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.projeto-links a:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para a seção Contato */
+#contato {
+    padding: 40px 20px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    text-align: center; /* Centralizar o conteúdo da seção */
+}
+
+#contato h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+#contato p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.contato-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* Centralizar a lista horizontalmente */
+    max-width: 600px; /* Largura máxima da lista */
+}
+
+.contato-lista li {
+    display: flex; /* Alinhar ícone e texto na mesma linha */
+    align-items: center; /* Alinhar verticalmente */
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Cor de fundo para cada item */
+    border: 1px solid #eee; /* Borda sutil */
+}
+
+.contato-icon {
+    width: 30px; /* Tamanho dos ícones */
+    height: 30px;
+    margin-right: 15px;
+}
+
+.contato-lista strong {
+    font-size: 1.1em;
+    color: #333;
+    min-width: 120px; /* Largura mínima para o texto "Email:", "WhatsApp:", etc. */
+}
+
+.contato-lista a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contato-lista a:hover {
+    text-decoration: underline;
+}
