@@ -1,60 +1,4 @@
-const projetosData = [
-    {
-        nome: "AmberView",
-        descricao: "Site publicitario, falando sobre a empresa, serviços e produtos, e formas de contato.",
-        pagina: "https://amberview.shop/",
-        repositorioFrontend: "https://github.com/drivanreis/AmberView",
-        tecnologiaFrontend: "HTML5, CSS3 E JavaScript",
-        repositorioBackend: "NÃO TEM",
-        tecnologiaBackend: "NÃO TEM",
-        repositorioBackendAlternativo: "NÃO TEM",
-        tecnologiaBackendAlternativo: "NÃO TEM"
-    },
-    {
-        nome: "Galeria de Fotos",
-        descricao: "Site para armazenar fotos",
-        pagina: "https://www.ivanreisdev.shop/",
-        repositorioFrontend: "https://github.com/drivanreis/galeria-de-fotos-frontend",
-        tecnologiaFrontend: "React + Vite",
-        repositorioBackend: "https://github.com/drivanreis/galeria-de-fotos-back-node",
-        tecnologiaBackend: "Node.js, Express.js, Docker",
-        repositorioBackendAlternativo: "https://github.com/drivanreis/galeria-de-fotos-back-phyton",
-        tecnologiaBackendAlternativo: "Python + Flask"
-    },
-    {
-        nome: "Meus Torrents",
-        descricao: "Site para armazenar Capas e Links de filmes que mais gostei.",
-        pagina: "https://drivanreis.github.io/meustorrent/",
-        repositorioFrontend: "https://github.com/drivanreis/meustorrent",
-        tecnologiaFrontend: "HTML5, CSS3 E JavaScript",
-        repositorioBackend: "NÃO TEM",
-        tecnologiaBackend: "NÃO TEM",
-        repositorioBackendAlternativo: "NÃO TEM",
-        tecnologiaBackendAlternativo: "NÃO TEM"
-    },
-    {
-        nome: "RIGs para Mineração",
-        descricao: "Site OutDoor para divugação de produtos",
-        pagina: "https://drivanreis.github.io/siterig/",
-        repositorioFrontend: "https://github.com/drivanreis/siterig",
-        tecnologiaFrontend: "HTML5, CSS3 E JavaScript",
-        repositorioBackend: "NÃO TEM",
-        tecnologiaBackend: "NÃO TEM",
-        repositorioBackendAlternativo: "NÃO TEM",
-        tecnologiaBackendAlternativo: "NÃO TEM"
-    },
-    {
-        nome: "Confeitaria",
-        descricao: "Site OutDoor para divugação de produtos",
-        pagina: "https://drivanreis.github.io/confeitaria/",
-        repositorioFrontend: "https://github.com/drivanreis/confeitaria",
-        tecnologiaFrontend: "HTML5, CSS3 E JavaScript",
-        repositorioBackend: "NÃO TEM",
-        tecnologiaBackend: "NÃO TEM",
-        repositorioBackendAlternativo: "NÃO TEM",
-        tecnologiaBackendAlternativo: "NÃO TEM"
-    }
-];
+import projetosData from './dados.js';
 
 const projetosGrid = document.querySelector('.projetos-grid');
 
@@ -87,3 +31,64 @@ projetosData.forEach(projeto => {
     `;
     projetosGrid.appendChild(projetoCard);
 });
+
+// Espera o DOM carregar completamente
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Pega a referência do botão e do conteúdo expansível
+    const btnLeiaMais = document.getElementById('btn-leia-mais');
+    const cartaCompleta = document.getElementById('carta-completa');
+  
+    // Verifica se ambos os elementos existem antes de adicionar o listener
+    if (btnLeiaMais && cartaCompleta) {
+      // Adiciona um evento de clique ao botão
+      btnLeiaMais.addEventListener('click', function() {
+        // Alterna a classe 'visivel' no container da carta
+        cartaCompleta.classList.toggle('visivel');
+  
+        // Alterna o texto do botão e a classe 'ativo' para a seta (opcional)
+        if (cartaCompleta.classList.contains('visivel')) {
+          btnLeiaMais.textContent = 'Leia menos';
+          btnLeiaMais.classList.add('ativo'); // Adiciona classe para mudar a seta
+        } else {
+          btnLeiaMais.textContent = 'Leia a Carta de Apresentação';
+          btnLeiaMais.classList.remove('ativo'); // Remove classe para voltar a seta
+        }
+      });
+    } else {
+      console.error("Elemento 'btn-leia-mais' ou 'carta-completa' não encontrado.");
+    }
+
+    // --- Código do Menu Hambúrguer (Novo) ---
+  const btnHamburguer = document.getElementById('menu-hamburguer');
+  const navbar = document.getElementById('navbar');
+
+  if (btnHamburguer && navbar) {
+    btnHamburguer.addEventListener('click', function() {
+      navbar.classList.toggle('ativo'); // Alterna a classe que mostra/esconde o menu no CSS
+      btnHamburguer.classList.toggle('ativo'); // Alterna a classe para animar o botão (opcional)
+
+      // Atualiza aria-expanded para acessibilidade
+      const menuAberto = navbar.classList.contains('ativo');
+      btnHamburguer.setAttribute('aria-expanded', menuAberto);
+    });
+  } else {
+    console.error("Elemento 'menu-hamburguer' ou 'navbar' não encontrado.");
+  }
+
+  // Opcional: Fechar o menu ao clicar em um link (bom para SPAs ou páginas longas)
+  if (navbar) {
+      const linksDoMenu = navbar.querySelectorAll('ul li a');
+      linksDoMenu.forEach(link => {
+          link.addEventListener('click', () => {
+              // Verifica se o menu hamburguer está ativo (visível)
+              if (btnHamburguer && navbar.classList.contains('ativo')) {
+                  navbar.classList.remove('ativo');
+                  btnHamburguer.classList.remove('ativo');
+                  btnHamburguer.setAttribute('aria-expanded', 'false');
+              }
+          });
+      });
+  }
+  
+  }); // Fim do DOMContentLoaded listener

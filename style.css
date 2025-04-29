@@ -1,158 +1,294 @@
+/* Reset CSS Básico */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Paleta de Cores */
+    --cor-primaria: #007bff;
+    --cor-secundaria: #6c757d;
+    --cor-texto: #343a40;
+    --cor-fundo: #f8f9fa;
+    --cor-destaque: #28a745;
+
+    /* Tipografia */
+    --fonte-principal: 'Roboto', sans-serif;
+    --fonte-secundaria: 'Arial', sans-serif;
+}
+
+body {
+    min-width: 300px; /* Para evitar que o header fique muito pequeno */
+    font-family: var(--fonte-principal);
+    line-height: 1.6;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Estilos para o container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 header {
     background-color: #fff;
-    padding: 20px;
-    display: flex; /* Ativa o Flexbox para o header */
-    align-items: center; /* Alinha verticalmente os itens ao centro */
-    justify-content: space-around; /* Distribui o espaço entre os blocos */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    /* Para telas maiores que 768px */
+    justify-content: space-around; /* Alterado para space-around conforme especificado */
     border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* Posicionamento relativo pode ser necessário para filhos absolutos em mobile */
+    position: relative;
 }
 
 .logo {
-    display: block; /* Permite que a imagem seja clicável */
-    text-align: center; /* Centraliza o logo dentro do bloco */
+    display: block;
+    text-align: center;
+    width: 33%;
+    /* order: 1; Pode precisar de order na visualização mobile */
+    /* Remove margin-right: auto para usar space-around no header */
+}
+
+.logo img {
+    margin:auto
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: var(--cor-primaria);
 }
 
 .centro {
-    text-align: center; /* Centraliza o título e a descrição dentro do bloco */
+    text-align: center;
+    /* order: 2; Pode precisar de order na visualização mobile */
+    /* Posicionamento absoluto para centralizar independentemente do space-around */
+    /* position: absolute; */
+    left: 50%;
+    /* transform: translateX(-50%); */
+    /* Ajustar largura se necessário para evitar sobreposição em telas maiores */
+    width: 33%;
 }
 
+
 .centro h1 {
-    color: #333;
+    color: var(--cor-texto);
     margin-bottom: 5px;
-    font-size: 2.8em;
+    font-size: 2.5em; /* Pode precisar ajustar para mobile */
 }
 
 .centro p {
-    color: #777;
-    font-size: 1.1em;
+    color: var(--cor-secundaria);
+    font-size: 1.1em; /* Pode precisar ajustar para mobile */
     margin-bottom: 0;
 }
 
 .profile-img {
-    width: 80px; /* Ajuste o tamanho conforme necessário */
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
+    transition: transform 0.3s ease-in-out;
 }
 
-.navbar nav ul {
+.profile-img:hover {
+    transform: scale(1.1);
+}
+
+/* Navbar Desktop Styles (Mantido o comportamento padrão para telas > 768px) */
+.menu-bar {
+    width: 33%;
+}
+
+.menu-bar nav {
+    display: flex;
+    justify-content: center; /* Alinha os itens à direita */
+    align-items: center;
+    height: 100%;
+}
+
+.menu-bar ul { /* Direciona para a UL diretamente */
     list-style: none;
+    display: flex; /* Exibição padrão desktop */
+    margin: auto; /* Reseta margin/padding */
     padding: 0;
-    margin: 0;
 }
 
-.navbar nav li {
-    display: inline;
-    margin: 0 15px;
+.menu-bar ul li { /* Direciona para LI diretamente */
+    margin-left: 20px;
 }
 
-.navbar nav a {
+.menu-bar ul li a { /* Direciona para A diretamente */
     text-decoration: none;
-    color: #555;
+    color: var(--cor-texto);
     font-weight: bold;
-    font-size: 1.1em;
+    transition: color 0.3s ease;
+    display: block; /* Garante comportamento consistente */
+    padding: 5px 0; /* Adiciona padding vertical se necessário */
 }
 
-.navbar nav a:hover {
-    color: #007bff;
+.menu-bar ul li a:hover {
+    color: var(--cor-primaria);
 }
+
+
+/* Estilos do Botão Hambúrguer (Adicionado) */
+.menu-hamburguer {
+  display: none; /* Escondido em telas maiores */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 110; /* Acima do header */
+  /* order: 4; Será definido em media query */
+}
+
+.hamburguer-linha {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: var(--cor-texto); /* Usando cor do texto */
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Estilos para quando o menu está aberto (transforma em 'X') */
+.menu-hamburguer.ativo .hamburguer-linha:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-hamburguer.ativo .hamburguer-linha:nth-child(2) {
+  opacity: 0;
+}
+.menu-hamburguer.ativo .hamburguer-linha:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
 
 /* Estilos para a seção Sobre Mim */
 #sobre {
-    padding: 40px 20px; /* Espaçamento interno superior/inferior e laterais */
-    background-color: #f9f9f9; /* Cor de fundo levemente acinzentada */
-    margin-bottom: 30px; /* Espaçamento abaixo da seção */
+    padding: 60px 0;
+    background-color: var(--cor-fundo);
 }
 
+#sobre .container { /* Especificidade para o container da seção */
+    max-width: 900px; /* Pode ajustar a largura */
+}
+
+
 #sobre h2 {
-    color: #333; /* Cor do título "Sobre Mim" */
-    margin-bottom: 20px; /* Espaçamento abaixo do título */
-    font-size: 2.5em; /* Tamanho da fonte do título */
-    text-align: center; /* Centralizar o título */
+    color: var(--cor-texto);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    text-align: center;
 }
 
 #sobre h3 {
-    color: #555; /* Cor do título "Carta de Apresentação" */
-    margin-top: 30px; /* Espaçamento acima do subtítulo */
-    margin-bottom: 15px; /* Espaçamento abaixo do subtítulo */
-    font-size: 1.8em; /* Tamanho da fonte do subtítulo */
+    color: var(--cor-texto);
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 1.6em;
 }
 
 #sobre p {
-    line-height: 1.6; /* Altura da linha para melhor leitura */
-    margin-bottom: 15px; /* Espaçamento entre os parágrafos */
-    color: #666; /* Cor do texto dos parágrafos */
+    color: var(--cor-secundaria);
+    line-height: 1.7;
+    margin-bottom: 20px;
 }
 
 #sobre ul {
-    list-style: disc; /* Estilo dos bullet points da lista */
-    margin-left: 20px; /* Indentação da lista */
-    margin-bottom: 15px; /* Espaçamento abaixo da lista */
-    color: #666; /* Cor do texto da lista */
+    list-style: disc;
+    margin-left: 20px;
+    color: var(--cor-secundaria);
 }
 
 #sobre li {
-    line-height: 1.6; /* Altura da linha dos itens da lista */
-    margin-bottom: 5px; /* Espaçamento entre os itens da lista */
+    line-height: 1.6;
+    margin-bottom: 10px;
 }
 
 /* Estilos para a seção Projetos */
 #projetos {
-    padding: 40px 20px;
-    background-color: #f2f2f2; /* Cor de fundo um pouco mais escura para diferenciar */
-    margin-bottom: 30px;
+    padding: 60px 0;
+    background-color: #fff;
 }
 
 #projetos h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2.5em;
+    color: var(--cor-texto);
+    margin-bottom: 30px;
+    font-size: 2.2em;
     text-align: center;
 }
 
 .projetos-grid {
-    display: grid; /* Usamos Grid para o layout dos cards */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cria colunas responsivas */
-    gap: 20px; /* Espaçamento entre os cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .projeto-card {
-    background-color: #fff;
+    background-color: var(--cor-fundo);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.projeto-card:hover {
+    transform: translateY(-5px);
 }
 
 .projeto-card h3 {
-    color: #007bff; /* Cor do título do projeto */
+    color: var(--cor-primaria);
     margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-size: 1.5em;
 }
 
 .projeto-card p {
+    color: var(--cor-secundaria);
     line-height: 1.6;
-    margin-bottom: 10px;
-    color: #555;
+    margin-bottom: 15px;
 }
 
 .projeto-card strong {
-    color: #333;
+    color: var(--cor-texto);
 }
 
 .projeto-links {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .projeto-links a {
     display: inline-block;
-    background-color: #007bff;
+    background-color: var(--cor-primaria);
     color: #fff;
-    padding: 8px 15px;
+    padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
     margin-right: 10px;
+    margin-bottom: 10px;
     font-size: 0.9em;
+    transition: background-color 0.3s ease;
 }
 
 .projeto-links a:hover {
@@ -161,59 +297,253 @@ header {
 
 /* Estilos para a seção Contato */
 #contato {
-    padding: 40px 20px;
-    background-color: #fff;
-    margin-bottom: 30px;
-    text-align: center; /* Centralizar o conteúdo da seção */
+    padding: 60px 0;
+    background-color: var(--cor-fundo);
 }
 
 #contato h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2.5em;
+    color: var(--cor-texto);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    text-align: center;
 }
 
 #contato p {
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #555;
+    color: var(--cor-secundaria);
+    line-height: 1.7;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .contato-lista {
     list-style: none;
-    padding: 0;
-    margin: 0 auto; /* Centralizar a lista horizontalmente */
-    max-width: 600px; /* Largura máxima da lista */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0; /* Remove default padding */
 }
 
 .contato-lista li {
-    display: flex; /* Alinhar ícone e texto na mesma linha */
-    align-items: center; /* Alinhar verticalmente */
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9; /* Cor de fundo para cada item */
-    border: 1px solid #eee; /* Borda sutil */
+    display: flex;
+    align-items: center;
+    margin: 10px 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.contato-lista li:hover {
+    transform: translateY(-5px);
 }
 
 .contato-icon {
-    width: 30px; /* Tamanho dos ícones */
+    width: 30px;
     height: 30px;
     margin-right: 15px;
 }
 
 .contato-lista strong {
     font-size: 1.1em;
-    color: #333;
-    min-width: 120px; /* Largura mínima para o texto "Email:", "WhatsApp:", etc. */
+    color: var(--cor-texto);
+    margin-right: 5px;
 }
 
 .contato-lista a {
-    color: #007bff;
+    color: var(--cor-primaria);
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
+    word-break: break-all; /* Quebra links longos se necessário */
 }
 
 .contato-lista a:hover {
+    color: #0056b3;
     text-decoration: underline;
+}
+
+footer {
+    background-color: var(--cor-texto);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+/* Estilos para o conteúdo expansível (Leia mais) */
+.conteudo-expansivel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    margin-top: 15px;
+  }
+
+  .conteudo-expansivel.visivel {
+    max-height: 1500px; /* Aumentado para garantir espaço para o conteúdo */
+    transition: max-height 0.5s ease-in;
+  }
+
+  .leia-mais-btn {
+    background-color: var(--cor-primaria); /* Usando variável */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+
+  .leia-mais-btn:hover {
+    background-color: #0056b3; /* Exemplo */
+  }
+
+  .leia-mais-btn::after {
+    content: ' ▼';
+    font-size: 0.8em;
+    margin-left: 5px;
+  }
+
+  .leia-mais-btn.ativo::after {
+    content: ' ▲';
+  }
+
+
+/* Media Queries para Responsividade (Telas menores que 769px) */
+@media (max-width: 768px) {
+    /* Ajustes no Header para Mobile */
+    header {
+        /* Para telas menores que 768px */
+        justify-content: space-between; /* Mantido conforme especificado para mobile */
+        flex-direction: row;
+        padding: 10px 15px;
+    }
+
+    .logo {
+        margin-right: 0;
+    }
+
+     .logo p a {
+         font-size: 0.9em;
+     }
+
+    .centro {
+        /* Posição absoluta já definida nos estilos gerais */
+        min-width: 30%; /* Evitar sobreposição */
+        /* Ajustar tamanho da fonte se necessário */
+    }
+    .centro h1 {
+       font-size: 1.8em;
+    }
+     .centro p {
+       font-size: 0.9em;
+    }
+
+    /* Mostra o Botão Hambúrguer e alinha à direita dentro do menu-bar */
+    .menu-hamburguer {
+        display: flex;
+        margin-left: auto; /* Alinha o botão hambúrguer à direita dentro do menu-bar */
+    }
+
+    /* Estiliza a Navbar UL para mobile */
+    .navbar ul {
+        display: none; /* Escondido por padrão */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 0;
+        margin: 0;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+        border-top: 1px solid #eee;
+        z-index: 100;
+    }
+
+    /* Mostra o menu quando a classe .ativo é adicionada */
+    .navbar.ativo ul {
+        display: flex;
+    }
+
+    .navbar ul li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar ul li a {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        color: var(--cor-texto);
+    }
+    .navbar ul li a:hover {
+        background-color: var(--cor-fundo);
+        color: var(--cor-primaria);
+    }
+    .navbar ul li:last-child a {
+        border-bottom: none;
+    }
+
+    /* Ajustes Gerais Mobile */
+    #sobre, #projetos, #contato {
+        padding: 40px 0;
+    }
+
+    .projetos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ajustes Contato Mobile */
+    .contato-lista li {
+        flex-direction: column;
+        text-align: center;
+        margin: 10px;
+    }
+    .contato-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+     .contato-lista strong {
+         margin-bottom: 5px;
+     }
+} /* Fim da Media Query max-width: 768px */
+
+
+/* --- Telas Maiores (Garantir Estilos Desktop - min-width: 769px) --- */
+@media (min-width: 769px) {
+  /* Garante que o menu hambúrguer está escondido */
+  .menu-hamburguer {
+    display: none;
+  }
+
+  /* Garante que a lista da navbar está visível e em linha */
+  .navbar ul {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+    border-top: none;
+    width: auto;
+  }
+
+  /* Restaura estilos de LI e A para desktop */
+  .navbar ul li {
+    margin-left: 20px;
+    width: auto;
+    border: none;
+  }
+   .navbar ul li a {
+      padding: 5px 0;
+      border: none;
+      width: auto;
+  }
+  .navbar ul li a:hover {
+      background-color: transparent;
+      color: var(--cor-primaria);
+   }
 }
