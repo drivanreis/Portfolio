@@ -1,115 +1,102 @@
 <!DOCTYPE html>
-<html lang="Pt-BR">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/icon.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfólio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="img/icon.png" type="image/png"/>
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="img/profile.jpg" alt="Foto de perfil" class="profile-img">
-            <p><a href="https://github.com/drivanreis">Ivan Reis</a></p>
+  <header>
+    <div class="logo">
+      <img src="img/profile.jpg" alt="Foto de perfil" class="profile-img"/>
+      <p><a href="https://github.com/drivanreis">Ivan Reis</a></p>
+    </div>
+
+    <div class="centro">
+      <h1>Portfólio</h1>
+      <p>Desenvolvedor Web</p>
+    </div>
+
+    <div class="menu-bar">
+      <button class="menu-hamburguer" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
+        <span class="hamburguer-linha"></span>
+        <span class="hamburguer-linha"></span>
+        <span class="hamburguer-linha"></span>
+      </button>
+
+      <nav class="navbar" id="navbar">
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre">
+      <div class="container">
+        <h2>Sobre Mim</h2>
+        <p>Olá! Sou um desenvolvedor web apaixonado por criar experiências incríveis na web. Tenho experiência em HTML, CSS e JavaScript.</p>
+        <button id="btn-leia-mais" class="leia-mais-btn">Leia a Carta de Apresentação</button>
+
+        <div id="carta-completa" class="conteudo-expansivel">
+          <h3>Carta de Apresentação</h3>
+          <p>Prezado Recrutador/Departamento de RH,</p>
+          <p>Escrevo para expressar meu grande interesse na oportunidade de atuar como programador em sua empresa...</p>
+          <p>Tenho 46 anos e uma vasta bagagem de conhecimento, e estou ansioso para direcionar essa experiência para a área da programação...</p>
+          <p>Atenciosamente,<br/>Ivan Reis</p>
         </div>
-        
-        <div class="centro">
-            <h1>Portfólio</h1>
-            <p>Desenvolvedor Web</p>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="container">
+        <h2>Meus Projetos</h2>
+        <div class="projetos-grid">
+          <!-- Card: WorldAmber -->
+          <div class="projeto-card">
+            <img src="img/worldamber.jpg" alt="WorldAmber logo" class="projeto-imagem"/>
+            <h3>WorldAmber</h3>
+            <p>Conglomerado de empresas que integra tecnologia, construção, monitoramento e serviços.</p>
+            <a href="https://drivanreis.github.io/worldamber" target="_blank" class="botao-projeto">Ver Projeto</a>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="menu-bar">
-            <button class="menu-hamburguer" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
-                <span class="hamburguer-linha"></span>
-                <span class="hamburguer-linha"></span>
-                <span class="hamburguer-linha"></span>
-            </button>
+    <section id="contato">
+      <div class="container">
+        <h2>Contato</h2>
+        <p>Sinta-se à vontade para entrar em contato comigo através das seguintes opções:</p>
+        <ul class="contato-lista">
+          <li>
+            <img src="img/email-icon.png" alt="Ícone de e-mail" class="contato-icon"/>
+            <strong>Email:</strong> <a href="mailto:dr.ivanreis@gmail.com">dr.ivanreis@gmail.com</a>
+          </li>
+          <li>
+            <img src="img/whatsapp-icon.png" alt="Ícone do WhatsApp" class="contato-icon"/>
+            <strong>WhatsApp:</strong> <a href="https://wa.me/5585984399916" target="_blank">+55 85 9 8439-9916</a>
+          </li>
+          <li>
+            <img src="img/linkedin-icon.png" alt="Ícone do LinkedIn" class="contato-icon"/>
+            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ivanreisdev" target="_blank">Meu Perfil no LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-            <nav class="navbar" id="navbar"> <ul>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <footer>
+    <p>&copy; 2024 Ivan Reis. Todos os direitos reservados.</p>
+  </footer>
 
-    <main>
-        <section id="sobre">
-            <div class="container">
-                <h2>Sobre Mim</h2>
-                <p>Olá! Sou um desenvolvedor web apaixonado por criar experiências incríveis na web. Tenho experiência em HTML, CSS e JavaScript.</p>
-                <button id="btn-leia-mais" class="leia-mais-btn">Leia a Carta de Apresentação</button>
-
-                <div id="carta-completa" class="conteudo-expansivel">
-                    <h3>Carta de Apresentação</h3>
-                    <p>Prezado Recrutador/Departamento de RH,</p>
-                    <p>Escrevo para expressar meu grande interesse na oportunidade de atuar como programador em sua empresa. Embora minha trajetória profissional
-                        inicial tenha se desenvolvido em diversos setores da indústria da construção civil, a paixão pela programação sempre foi um motor fundamental
-                        no meu desenvolvimento e na busca por soluções inovadoras.</p>
-                    <p>Minha experiência em ambientes industriais dinâmicos, como nas áreas de pré-moldados, vidros e rochas ornamentais, me proporcionou uma perspectiva
-                        única sobre os desafios operacionais e a importância da eficiência. Através da aplicação de lógica e ferramentas da informática, mesmo que de forma
-                        indireta, consegui otimizar processos e impulsionar a produtividade em diferentes contextos.</p>
-                    <p>Acredito que essa vivência multifacetada me conferiu um conjunto de habilidades valiosas:</p>
-                    <ul>
-                        <li>Visão Prática e Teórica: Obtive um equilíbrio entre a compreensão das necessidades do "campo de batalha" e o rigor analítico do ambiente de escritório.
-                            Essa combinação me permite identificar problemas relevantes e abordá-los com soluções pragmáticas e eficientes.</li>
-                        <li>Capacidade de Análise e Solução de Problemas: Desenvolvi a habilidade de decompor problemas complexos em fatores menores, equacionar cada um deles
-                            e conceber soluções sistêmicas e escaláveis.</li>
-                        <li>Foco em Resultados: Minha experiência me ensinou a importância de traduzir ideias em resultados tangíveis, como a otimização de processos e a melhoria
-                            da produtividade.</li>
-                        <li>Adaptabilidade e Aprendizado Contínuo: A diversidade de minhas experiências demonstra minha capacidade de adaptação a novos desafios e meu desejo
-                            constante por aprender e evoluir.</li>
-                    </ul>
-                    <p>Embora eu reconheça que esta carta não seja o espaço para detalhar cada projeto e conquista, gostaria de ressaltar meu entusiasmo em aplicar minha paixão
-                        pela programação e minha visão estratégica para contribuir com o crescimento da sua empresa. Acredito que minha capacidade de entender as necessidades
-                        do negócio, aliada ao meu desejo de desenvolver soluções tecnológicas inovadoras, pode ser um diferencial valioso para a equipe.</p>
-                    <p>Tenho 46 anos e uma vasta bagagem de conhecimento, e estou ansioso para direcionar essa experiência para a área da programação e colaborar ativamente para o
-                        sucesso da sua organização.</p>
-                    <p>Agradeço a sua atenção e coloco-me à disposição para uma conversa onde poderei detalhar minhas qualificações e ambições.</p>
-                    <p>Atenciosamente,</p>
-                    <p>Ivan Reis</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projetos">
-            <div class="container">
-                <h2>Meus Projetos</h2>
-                <div class="projetos-grid">
-                </div>
-            </div>
-        </section>
-
-        <section id="contato">
-            <div class="container">
-                <h2>Contato</h2>
-                <p>Sinta-se à vontade para entrar em contato comigo através das seguintes opções:</p>
-                <ul class="contato-lista">
-                    <li>
-                        <img src="img/email-icon.png" alt="Ícone de e-mail" class="contato-icon">
-                        <strong>Email:</strong> <a href="mailto:dr.ivanreis@gmail.com">dr.ivanreis@gmail.com</a>
-                    </li>
-                    <li>
-                        <img src="img/whatsapp-icon.png" alt="Ícone do WhatsApp" class="contato-icon">
-                        <strong>WhatsApp/Telefone/SMS:</strong> <a href="https://wa.me/5585984399916" target="_blank">+55 85 9 8439-9916</a>
-                    </li>
-                    <li>
-                        <img src="img/linkedin-icon.png" alt="Ícone do LinkedIn" class="contato-icon">
-                        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ivanreisdev" target="_blank">Meu Perfil no LinkedIn</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Ivan Reis. Todos os direitos reservados.</p>
-    </footer>
-    <script src="./script.js" type="module"></script>
+  <script src="./script.js" type="module"></script>
 </body>
 
 </html>

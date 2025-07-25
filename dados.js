@@ -1,10 +1,10 @@
 const projetosData = [
     {
-        nome: "AmberView",
-        descricao: "Site publicitario, falando sobre a empresa, serviços e produtos, e formas de contato.",
-        pagina: "https://amberview.shop/",
-        repositorioFrontend: "https://github.com/drivanreis/AmberView",
-        tecnologiaFrontend: "HTML5, CSS3 E JavaScript",
+        nome: "WorldAmber",
+        descricao: "Portal principal de soluções Amber: reúne todas as empresas filhas e apresenta a proposta inovadora da startup.",
+        pagina: "https://drivanreis.github.io/worldamber/",
+        repositorioFrontend: "https://github.com/drivanreis/worldamber",
+        tecnologiaFrontend: "HTML5, CSS3 e JavaScript",
         repositorioBackend: "NÃO TEM",
         tecnologiaBackend: "NÃO TEM",
         repositorioBackendAlternativo: "NÃO TEM",
