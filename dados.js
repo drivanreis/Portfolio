@@ -11,6 +11,17 @@ const projetosData = [
         tecnologiaBackendAlternativo: "NÃO TEM"
     },
     {
+        nome: "AmberView",
+        descricao: "Site publicitario, falando sobre a empresa, serviços e produtos, e formas de contato.",
+        pagina: "https://amberview.shop/",
+        repositorioFrontend: "https://github.com/drivanreis/AmberView",
+        tecnologiaFrontend: "HTML5, CSS3 E JavaScript",
+        repositorioBackend: "NÃO TEM",
+        tecnologiaBackend: "NÃO TEM",
+        repositorioBackendAlternativo: "NÃO TEM",
+        tecnologiaBackendAlternativo: "NÃO TEM"
+    },
+    {
         nome: "Galeria de Fotos",
         descricao: "Site para armazenar fotos",
         pagina: "https://www.ivanreisdev.shop/",

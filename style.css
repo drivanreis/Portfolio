@@ -8,17 +8,33 @@
 }
 
 :root {
-    /* Paleta de Cores */
+    /* Paleta de Cores - Tema Claro */
     --cor-primaria: #007bff;
     --cor-secundaria: #6c757d;
     --cor-texto: #343a40;
     --cor-fundo: #f8f9fa;
+    --cor-fundo-card: #fff; /* Adicionado para cards */
+    --cor-header-footer: #fff; /* Adicionado para header e footer */
     --cor-destaque: #28a745;
+    --cor-borda: #eee; /* Adicionado para bordas */
 
     /* Tipografia */
     --fonte-principal: 'Roboto', sans-serif;
     --fonte-secundaria: 'Arial', sans-serif;
 }
+
+/* Tema Escuro */
+body.dark-mode {
+    --cor-primaria: #8cb4ff; /* Azul mais claro para contraste no escuro */
+    --cor-secundaria: #adb5bd; /* Cinza mais claro */
+    --cor-texto: #e9ecef; /* Texto quase branco */
+    --cor-fundo: #212529; /* Fundo escuro */
+    --cor-fundo-card: #343a40; /* Fundo de card escuro */
+    --cor-header-footer: #212529; /* Header e footer escuros */
+    --cor-destaque: #6ddb84; /* Verde mais claro */
+    --cor-borda: #495057; /* Borda mais escura */
+}
+
 
 body {
     min-width: 300px; /* Para evitar que o header fique muito pequeno */
@@ -27,6 +43,7 @@ body {
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
 /* Estilos para o container */
@@ -37,27 +54,24 @@ body {
 }
 
 header {
-    background-color: #fff;
+    background-color: var(--cor-header-footer); /* Usando variável */
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    /* Para telas maiores que 768px */
-    justify-content: space-around; /* Alterado para space-around conforme especificado */
-    border-bottom: 1px solid #eee;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--cor-borda); /* Usando variável */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
-    /* Posicionamento relativo pode ser necessário para filhos absolutos em mobile */
     position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
 }
 
 .logo {
     display: block;
     text-align: center;
     width: 33%;
-    /* order: 1; Pode precisar de order na visualização mobile */
-    /* Remove margin-right: auto para usar space-around no header */
 }
 
 .logo img {
@@ -77,12 +91,7 @@ header {
 
 .centro {
     text-align: center;
-    /* order: 2; Pode precisar de order na visualização mobile */
-    /* Posicionamento absoluto para centralizar independentemente do space-around */
-    /* position: absolute; */
     left: 50%;
-    /* transform: translateX(-50%); */
-    /* Ajustar largura se necessário para evitar sobreposição em telas maiores */
     width: 33%;
 }
 
@@ -90,12 +99,12 @@ header {
 .centro h1 {
     color: var(--cor-texto);
     margin-bottom: 5px;
-    font-size: 2.5em; /* Pode precisar ajustar para mobile */
+    font-size: 2.5em;
 }
 
 .centro p {
     color: var(--cor-secundaria);
-    font-size: 1.1em; /* Pode precisar ajustar para mobile */
+    font-size: 1.1em;
     margin-bottom: 0;
 }
 
@@ -111,36 +120,35 @@ header {
     transform: scale(1.1);
 }
 
-/* Navbar Desktop Styles (Mantido o comportamento padrão para telas > 768px) */
 .menu-bar {
     width: 33%;
 }
 
 .menu-bar nav {
     display: flex;
-    justify-content: center; /* Alinha os itens à direita */
+    justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.menu-bar ul { /* Direciona para a UL diretamente */
+.menu-bar ul {
     list-style: none;
-    display: flex; /* Exibição padrão desktop */
-    margin: auto; /* Reseta margin/padding */
+    display: flex;
+    margin: auto;
     padding: 0;
 }
 
-.menu-bar ul li { /* Direciona para LI diretamente */
+.menu-bar ul li {
     margin-left: 20px;
 }
 
-.menu-bar ul li a { /* Direciona para A diretamente */
+.menu-bar ul li a {
     text-decoration: none;
     color: var(--cor-texto);
     font-weight: bold;
     transition: color 0.3s ease;
-    display: block; /* Garante comportamento consistente */
-    padding: 5px 0; /* Adiciona padding vertical se necessário */
+    display: block;
+    padding: 5px 0;
 }
 
 .menu-bar ul li a:hover {
@@ -150,7 +158,7 @@ header {
 
 /* Estilos do Botão Hambúrguer (Adicionado) */
 .menu-hamburguer {
-  display: none; /* Escondido em telas maiores */
+  display: none;
   flex-direction: column;
   justify-content: space-around;
   width: 30px;
@@ -159,20 +167,18 @@ header {
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 110; /* Acima do header */
-  /* order: 4; Será definido em media query */
+  z-index: 110;
 }
 
 .hamburguer-linha {
   display: block;
   width: 30px;
   height: 3px;
-  background-color: var(--cor-texto); /* Usando cor do texto */
+  background-color: var(--cor-texto);
   border-radius: 3px;
   transition: all 0.3s ease-in-out;
 }
 
-/* Estilos para quando o menu está aberto (transforma em 'X') */
 .menu-hamburguer.ativo .hamburguer-linha:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -188,10 +194,11 @@ header {
 #sobre {
     padding: 60px 0;
     background-color: var(--cor-fundo);
+    transition: background-color 0.3s ease;
 }
 
-#sobre .container { /* Especificidade para o container da seção */
-    max-width: 900px; /* Pode ajustar a largura */
+#sobre .container {
+    max-width: 900px;
 }
 
 
@@ -229,7 +236,8 @@ header {
 /* Estilos para a seção Projetos */
 #projetos {
     padding: 60px 0;
-    background-color: #fff;
+    background-color: var(--cor-fundo-card); /* Ajustado para usar var */
+    transition: background-color 0.3s ease;
 }
 
 #projetos h2 {
@@ -246,11 +254,15 @@ header {
 }
 
 .projeto-card {
-    background-color: var(--cor-fundo);
+    background-color: var(--cor-fundo); /* Fundo do card */
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Sombra para dark mode */
+body.dark-mode .projeto-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .projeto-card:hover {
@@ -299,6 +311,7 @@ header {
 #contato {
     padding: 60px 0;
     background-color: var(--cor-fundo);
+    transition: background-color 0.3s ease;
 }
 
 #contato h2 {
@@ -320,7 +333,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 0; /* Remove default padding */
+    padding: 0;
 }
 
 .contato-lista li {
@@ -329,9 +342,13 @@ header {
     margin: 10px 20px;
     padding: 15px;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: var(--cor-fundo-card); /* Usando variável */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Sombra para dark mode */
+body.dark-mode .contato-lista li {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .contato-lista li:hover {
@@ -355,7 +372,7 @@ header {
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
-    word-break: break-all; /* Quebra links longos se necessário */
+    word-break: break-all;
 }
 
 .contato-lista a:hover {
@@ -364,12 +381,18 @@ header {
 }
 
 footer {
-    background-color: var(--cor-texto);
-    color: #fff;
+    background-color: var(--cor-header-footer); /* Usando variável */
+    color: var(--cor-texto); /* Usando variável para o texto do footer */
     text-align: center;
     padding: 20px;
     font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+/* Cor do texto do footer no dark mode */
+body.dark-mode footer {
+    color: var(--cor-texto);
+}
+
 
 /* Estilos para o conteúdo expansível (Leia mais) */
 .conteudo-expansivel {
@@ -380,12 +403,12 @@ footer {
   }
 
   .conteudo-expansivel.visivel {
-    max-height: 1500px; /* Aumentado para garantir espaço para o conteúdo */
+    max-height: 1500px;
     transition: max-height 0.5s ease-in;
   }
 
   .leia-mais-btn {
-    background-color: var(--cor-primaria); /* Usando variável */
+    background-color: var(--cor-primaria);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -397,7 +420,7 @@ footer {
   }
 
   .leia-mais-btn:hover {
-    background-color: #0056b3; /* Exemplo */
+    background-color: #0056b3;
   }
 
   .leia-mais-btn::after {
@@ -410,13 +433,37 @@ footer {
     content: ' ▲';
   }
 
+/* Estilos para o botão flutuante de tema */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--cor-primaria);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+.theme-toggle:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
 
 /* Media Queries para Responsividade (Telas menores que 769px) */
 @media (max-width: 768px) {
     /* Ajustes no Header para Mobile */
     header {
-        /* Para telas menores que 768px */
-        justify-content: space-between; /* Mantido conforme especificado para mobile */
+        justify-content: space-between;
         flex-direction: row;
         padding: 10px 15px;
     }
@@ -430,9 +477,7 @@ footer {
      }
 
     .centro {
-        /* Posição absoluta já definida nos estilos gerais */
-        min-width: 30%; /* Evitar sobreposição */
-        /* Ajustar tamanho da fonte se necessário */
+        min-width: 30%;
     }
     .centro h1 {
        font-size: 1.8em;
@@ -441,29 +486,27 @@ footer {
        font-size: 0.9em;
     }
 
-    /* Mostra o Botão Hambúrguer e alinha à direita dentro do menu-bar */
     .menu-hamburguer {
         display: flex;
-        margin-left: auto; /* Alinha o botão hambúrguer à direita dentro do menu-bar */
+        margin-left: auto;
     }
 
-    /* Estiliza a Navbar UL para mobile */
     .navbar ul {
-        display: none; /* Escondido por padrão */
+        display: none;
         flex-direction: column;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #fff;
+        background-color: var(--cor-fundo-card); /* Usando variável */
         padding: 0;
         margin: 0;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-        border-top: 1px solid #eee;
+        border-top: 1px solid var(--cor-borda); /* Usando variável */
         z-index: 100;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
-    /* Mostra o menu quando a classe .ativo é adicionada */
     .navbar.ativo ul {
         display: flex;
     }
@@ -476,7 +519,7 @@ footer {
 
     .navbar ul li a {
         padding: 15px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--cor-borda); /* Usando variável */
         width: 100%;
         color: var(--cor-texto);
     }
@@ -510,6 +553,15 @@ footer {
      .contato-lista strong {
          margin-bottom: 5px;
      }
+
+    /* Ajustar posição do botão de tema em mobile */
+    .theme-toggle {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
+    }
 } /* Fim da Media Query max-width: 768px */
 
 
